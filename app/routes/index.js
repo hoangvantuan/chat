@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 		res.redirect('/rooms');
 	}
 	else{
-		res.render('login', {
+		res.render('index', {
 			success: req.flash('success')[0],
 			errors: req.flash('error'), 
 			showRegisterForm: req.flash('showRegisterForm')[0]

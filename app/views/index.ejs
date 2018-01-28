@@ -1,0 +1,40 @@
+<% include layout/head %>
+<% include layout/nav %>
+
+<div class="container-fluid background" id="app">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4 login">
+			<div class="form-login">
+				<h3 v-text="form['title']"></h3>
+				<% if(errors != null && errors.length != 0) {%>
+				<div class="alert alert-danger">
+  					<%= errors %>
+				</div>
+				<% } %>
+
+				<% if(success != null) {%>
+				<div class="alert alert-info">
+  					<%= success %>
+				</div>
+				<% } %>
+
+				<form v-bind:method="form['method']" v-bind:action="form['action']">
+					<div class="form-group">
+						<label for="username">Username</label>
+						<input type="text" class="form-control" name="username" id="username" placeholder="Username">
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+					</div>
+					<button type="submit" class="btn btn-primary btn-block" v-text="form['title']"></button>
+				</form>
+				<hr>
+				<a class="btn btn-block btn-social btn-facebook" href="/auth/facebook"><span class="fa fa-facebook"></span> Sign in with Facebook</a>
+				<p class="pull-right" style="margin-top:10px" v-if="form['isLogin']">Not registered? <a href="#" v-on:click="setRegisterForm()">Create an account</a></p>
+				<p class="pull-right" style="margin-top:10px" v-else>Already has Account? <a href="#" v-on:click="setLoginForm()">Login</a></p>
+			</div>
+		</div>
+	</div>
+	<% include layout/footer %>
+</div>
